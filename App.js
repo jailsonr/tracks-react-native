@@ -11,34 +11,41 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
+import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
 
 const switchNavigator = createStackNavigator({
+  ResolveAuth: ResolveAuthScreen,
   loginFlow: createStackNavigator(
     {
       Signup: { screen: SignupScreen },
-      Signin: { screen: SigninScreen },
-      Home: { screen: HomeScreen }
+      Signin: { screen: SigninScreen }
     },
     {
       navigationOptions: {
         headerShown: false
-      },
-      initialRouteName: "Home"
+      }
     }
   ),
-  mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator(
-      {
-        Home: { screen: HomeScreen },
-        ExcursionDetail: { screen: ExcursionDetailScreen }
-      },
-      {
+  mainFlow: createBottomTabNavigator(
+    {
+      Home: createStackNavigator(
+        {
+          Home: { screen: HomeScreen },
+          ExcursionDetail: { screen: ExcursionDetailScreen }
+        },
+        {
+          headerShown: false
+        }
+      ),
+      Excursions: { screen: TrackCreateScreen },
+      Account: { screen: AccountScreen }
+    },
+    {
+      navigationOptions: {
         headerShown: false
       }
-    ),
-    TrackCreate: { screen: TrackCreateScreen },
-    Account: { screen: AccountScreen }
-  })
+    }
+  )
 });
 
 const App = createAppContainer(switchNavigator);
