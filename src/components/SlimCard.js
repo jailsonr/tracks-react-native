@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Card = props => {
+const SlimCard = props => {
   return (
     <Container>
       <Cover>
@@ -64,7 +64,7 @@ const BackgroundColorSpam = styled.View`
 
 const Container = styled.View`
   background: white;
-  width: 250px;
+  width: 190px;
   height: 320px;
   border-radius: 14px;
   margin-left: 20px;
@@ -105,4 +105,4 @@ const Spam = styled.Text`
   margin-right: 5px;
 `;
 
-export default Card;
+export default SlimCard;

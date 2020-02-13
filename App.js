@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
 import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
+import MapScreen from "./src/screens/MapScreen";
 
 const switchNavigator = createStackNavigator({
   ResolveAuth: ResolveAuthScreen,
@@ -37,6 +38,7 @@ const switchNavigator = createStackNavigator({
           headerShown: false
         }
       ),
+      Map: { screen: MapScreen },
       Excursions: { screen: TrackCreateScreen },
       Account: { screen: AccountScreen }
     },
