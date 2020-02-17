@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ExcursionForm from "../components/ExcursionForm";
 import PreSearchCard from "../components/PreSearchCard";
 import { SearchBar } from "react-native-elements";
+import { Icon } from "expo";
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -12,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
       <Gambiarra />
       <SearchBar
         inputStyle={{ backgroundColor: "white", paddingBottom: 6 }}
-        style={{ paddingBottom: 30 }}
+        style={{ paddingBottom: 0 }}
         containerStyle={{
           width: 350,
           paddingLeft: 20,
@@ -51,20 +52,23 @@ const HomeScreen = ({ navigation }) => {
             <PreSearchCard key={index} text={filter.name} />
           ))}
         </ScrollView>
-        <ExcursionForm seccionTitle="TRENDING NEAR YOU" cardType="regular" />
+        <ExcursionForm
+          seccionTitle="TRENDING NEAR YOU"
+          cardType="regular"
+          navigation={navigation}
+        />
         <ExcursionForm
           seccionTitle="POPULAR EXCURSIONS IN PUCÓN"
           cardType="slim"
+          navigation={navigation}
         />
       </ScrollView>
     </Container>
   );
 };
 
-HomeScreen.navigationOptions = () => {
-  return {
-    headerShown: false
-  };
+HomeScreen.navigationOptions = {
+  headerShown: false
 };
 
 //const styles = StyleSheet.create({});
@@ -93,6 +97,9 @@ const scrollViewStyle = StyleSheet.create({
 export default HomeScreen;
 
 const filters = [
+  {
+    name: "PaymentMenu Test"
+  },
   {
     name: "Nature"
   },

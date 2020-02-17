@@ -13,6 +13,7 @@ import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
 import ResolveAuthScreen from "./src/screens/ResolveAuthScreen";
 import MapScreen from "./src/screens/MapScreen";
+import { Icon } from "expo";
 
 const switchNavigator = createStackNavigator({
   ResolveAuth: ResolveAuthScreen,
@@ -35,7 +36,18 @@ const switchNavigator = createStackNavigator({
           ExcursionDetail: { screen: ExcursionDetailScreen }
         },
         {
-          headerShown: false
+          navigationOptions: ({ navigation }) => {
+            const routeName =
+              navigation.state.routes[navigation.state.index].routeName;
+            // console.log(routeName);
+
+            let tabBarVisible = routeName == "ExcursionDetail" ? false : true;
+
+            return {
+              headerShown: false,
+              tabBarVisible
+            };
+          }
         }
       ),
       Map: { screen: MapScreen },
